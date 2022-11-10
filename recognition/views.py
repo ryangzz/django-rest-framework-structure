@@ -11,12 +11,12 @@ import json
 @require_POST
 @csrf_exempt
 def reconocimiento(request, param = 'external'):
-    reconocimiento  = Reconnition(request, param)
+    reconocimiento  = Reconnition()
     response        = None
     if param == 'external':
         params      = json.loads(request.body)
         response    = reconocimiento.recognition_voice_base64(params['audio'], params['name'])
         return response
     else:
-        response = reconocimiento.recognition_voice_source()
+        response = reconocimiento.recognition_voice_source(request.POST['audio'])
     return response
