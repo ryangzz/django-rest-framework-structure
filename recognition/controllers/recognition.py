@@ -52,8 +52,26 @@ class Reconnition():
                     wav_file.write(decode_bytes)
             with sr.AudioFile(filename) as archivo:
                     audio = self.reconocimiento.record(archivo) 
-            texto = self.reconocimiento.recognize_sphinx(audio, language='es-MX')
-            texto = self.reconocimiento.reco
+            texto = self.reconocimiento.recognize_sphinx(audio, language='es-es')
+            error = 'false'
+        except Exception as e:
+            error = 'true'
+            texto = str(e)
+            print(texto)
+        os.remove(filename)
+        return JsonResponse({'texto': texto, 'error':error}, safe=False, status=200)
+
+    def recognition_voice_base64_sphinx2(self, base64P ='', filenameP = ''):
+        error       = 'false'
+        filename    = str(time.time())+filenameP
+        texto       = ''
+        try:
+            decode_bytes = base64.b64decode(base64P)
+            with open(filename, "wb") as wav_file:
+                    wav_file.write(decode_bytes)
+            with sr.AudioFile(filename) as archivo:
+                    audio = self.reconocimiento.record(archivo) 
+            texto = self.reconocimiento.recognize_sphinx(audio, language='es-cimpies')
             error = 'false'
         except Exception as e:
             error = 'true'
@@ -68,7 +86,7 @@ class Reconnition():
         try:
             with sr.AudioFile(audioPath) as archivo:
                 audio = self.reconocimiento.record(archivo) 
-            texto = self.reconocimiento.recognize_sphinx(audio, language='es-MX')
+            texto = self.reconocimiento.recognize_sphinx(audio, language='es-es')
             error = 'false'
         except Exception as e:
             error = 'true'

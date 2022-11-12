@@ -6,5 +6,6 @@ urlpatterns = [
     path('voice-text/', views.reconocimiento, name = 'voz'),
     re_path(r'^voice-text/(?P<param>(internal))', views.reconocimiento, name = 'voz'),
     path('voicetext/', views.reconocimiento_offline, name = 'vozSphinx'),
-    re_path(r'^voicetext/(?P<param>(internal))', views.reconocimiento_offline, name = 'vozSphinx'),
+    path('voicetext/', views.reconocimiento_offline, name = 'vozSphinx'),
+    re_path(r'^voicetext/(?P<param>(internal)|(external2))', views.reconocimiento_offline, name = 'vozSphinx'),
 ]

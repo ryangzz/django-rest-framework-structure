@@ -30,6 +30,10 @@ def reconocimiento_offline(request, param = 'external'):
         params      = json.loads(request.body)
         response    = reconocimiento.recognition_voice_base64_sphinx(params['audio'], params['name'])
         return response
+    elif param == 'external2':
+        params      = json.loads(request.body)
+        response    = reconocimiento.recognition_voice_base64_sphinx2(params['audio'], params['name'])
+        return response
     else:
         response = reconocimiento.recognition_voice_source(request.POST['audio'])
     return response
