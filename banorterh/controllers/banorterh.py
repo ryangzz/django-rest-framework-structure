@@ -72,3 +72,4 @@ class BanorteRh():
             error = 'true'
             texto = str(e)
         return JsonResponse({'msg': texto,'error':error, 'notFound':dirs}, safe=False, status=200)
+        

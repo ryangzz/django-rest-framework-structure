@@ -25,15 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = 'RENDER' not in os.environ
+DEBUG = True
+#DEBUG = 'RENDER' not in os.environ
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['10.132.1.118']
-
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:    
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+#ALLOWED_HOSTS = ['10.132.1.39']
+ALLOWED_HOSTS = ['10.132.0.39']
 
 # Application definition
 
@@ -47,7 +43,8 @@ INSTALLED_APPS = [
     'recognition',
     'banorterh',
     'projects',
-    'rest_framework'
+    'rest_framework',
+    'vision'
 ]
 
 MIDDLEWARE = [
