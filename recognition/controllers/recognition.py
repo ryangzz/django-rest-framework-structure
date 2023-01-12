@@ -13,6 +13,8 @@ class Reconnition():
     def recognition_voice_source(self, audioPath):
         error = 'false'
         texto = ''
+        audioPath = '/home/desarrollo/prodshare/'+audioPath
+        #print("audioPath "+ audioPath)
         try:
             with sr.AudioFile(audioPath) as archivo:
                 audio = self.reconocimiento.record(archivo) 
@@ -21,7 +23,8 @@ class Reconnition():
         except Exception as e:
             error = 'true'
             texto = str(e)
-        return JsonResponse({'texto': texto, 'error':error}, safe=False, status=200)
+            print("error: " + str(e))
+        return JsonResponse({'texto': texto, 'error':error, 'audio':audioPath}, safe=False, status=200)
 
     def recognition_voice_base64(self, base64P ='', filenameP = ''):
         error       = 'false'
@@ -80,7 +83,7 @@ class Reconnition():
         os.remove(filename)
         return JsonResponse({'texto': texto, 'error':error}, safe=False, status=200)
 
-    def recognition_voice_source(self, audioPath):
+    def recognition_voice_source1(self, audioPath):
         error = 'false'
         texto = ''
         try:
@@ -91,4 +94,4 @@ class Reconnition():
         except Exception as e:
             error = 'true'
             texto = str(e)
-        return JsonResponse({'texto': texto, 'error':error}, safe=False, status=200)
+        return JsonResponse({'texto': texto, 'error':error,'audioPath':audioPath}, safe=False, status=200)
