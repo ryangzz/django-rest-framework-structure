@@ -29,7 +29,7 @@ DEBUG = True
 #DEBUG = 'RENDER' not in os.environ
 
 #ALLOWED_HOSTS = ['10.132.1.39']
-ALLOWED_HOSTS = ['10.132.0.39']
+ALLOWED_HOSTS = ['10.132.1.118']
 
 # Application definition
 
@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'banorterh',
     'projects',
     'rest_framework',
-    'vision'
+    'vision',
+    'fiduciariio'
 ]
 
 MIDDLEWARE = [

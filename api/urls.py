@@ -8,4 +8,5 @@ urlpatterns = [
     path('reconocimiento/', include('recognition.urls')),
     path('', include('banorterh.urls')),
     path('vision/', include('vision.urls')),
+    path('fiduciariio/', include('fiduciariio.urls')),
 ]
